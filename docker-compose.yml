@@ -1,0 +1,40 @@
+version: '3.9'
+
+networks:
+  wordpress:
+
+volumes:
+  mysql:
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: jose
+      WORDPRESS_DB_PASSWORD: fa9sd84f98ga
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress
+    volumes:
+      - /efs/jose_fernando/wordpress:/var/www/html
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: fa9sd84f98ga
+      MYSQL_PASSWORD: fa9sd84f98ga
+      MYSQL_USER: jose
+      MYSQL_DATABASE: wordpress
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+    networks:
+      - wordpress
+    volumes:
+      - mysql:/var/lib/mysql
