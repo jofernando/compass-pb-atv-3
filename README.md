@@ -81,7 +81,7 @@ Abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
   - Em `Sub-rede` selecione a sub-rede privada A.
   - Em `Firewall (grupos de segurança)` escolha `Selecionar um Grupo de Segurança existente` e escolha o Grupo de Segurança default.
 7. Em `Configurar armazenamento` crie um disco GP2 de 8GB.
-8. Clique em `Detalhes avançados` e no campo `Dados do usuário` copie e cole o conteúdo do arquivo [user_data.sh](). Esse script vai executar depois da criação da instância e instalar o Docker, Docker Compose, montar o sistema de arquivos EFS e iniciar dois contêiners, do WordPress e MySQL.
+8. Clique em `Detalhes avançados` e no campo `Dados do usuário` copie e cole o conteúdo do arquivo [user_data.sh](https://github.com/jofernando/compass-pb-atv-3/blob/main/user-data.sh). Esse script vai executar depois da criação da instância e instalar o Docker, Docker Compose, montar o sistema de arquivos EFS e iniciar dois contêiners, do WordPress e MySQL.
 
 Mantenha as seleções padrão para outras configurações de sua instância.
 
