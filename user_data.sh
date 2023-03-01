@@ -1,6 +1,6 @@
 #!/bin/bash
 yum update --assumeyes
-yum install --assumeyes docker
+yum install --assumeyes docker git
 systemctl enable --now docker
 
 DOCKER_CONFIG=/usr/local/lib/docker
@@ -16,6 +16,7 @@ cd compass-pb-atv-3
 
 mkdir --parents /efs/
 cat etc/fstab >> /etc/fstab
+mount -a
 
 /bin/cp etc/profile.d/00-aliases.sh /etc/profile.d/00-aliases.sh
 
