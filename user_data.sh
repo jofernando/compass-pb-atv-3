@@ -17,6 +17,6 @@ cd compass-pb-atv-3
 mkdir --parents /efs/
 cat etc/fstab >> /etc/fstab
 
-mv etc/profile.d/00-aliases.sh /etc/profile.d/00-aliases.sh
+/bin/cp etc/profile.d/00-aliases.sh /etc/profile.d/00-aliases.sh
 
 docker compose up --detach
