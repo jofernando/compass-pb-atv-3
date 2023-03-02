@@ -3,9 +3,6 @@ version: '3.9'
 networks:
   wordpress:
 
-volumes:
-  mysql:
-
 services:
   wordpress:
     image: wordpress
@@ -37,4 +34,4 @@ services:
     networks:
       - wordpress
     volumes:
-      - mysql:/var/lib/mysql
+      - /efs/jose_fernando/mysql:/var/lib/mysql
