@@ -8,9 +8,9 @@ José Fernando Mendes da Costa
 1. [Alterando sua VPC](https://github.com/jofernando/compass-pb-atv-3/#alterando-sua-vpc)
 1. [Criando um Grupo de Segurança para o Balanceador de Carga](https://github.com/jofernando/compass-pb-atv-3/#criando-um-grupo-de-segurança-para-o-balanceador-de-carga)
 1. [Alterando seu Grupo de Segurança default](https://github.com/jofernando/compass-pb-atv-3/#alterando-seu-grupo-de-segurança-default)
-1. [Criando sua instância](https://github.com/jofernando/compass-pb-atv-3/#criando-sua-instância)
 1. [Criando um Grupo de Destino](https://github.com/jofernando/compass-pb-atv-3/#criando-um-grupo-de-destino)
 1. [Criando um Balanceador de Carga](https://github.com/jofernando/compass-pb-atv-3/#criando-um-balanceador-de-carga)
+1. [Criando sua instância](https://github.com/jofernando/compass-pb-atv-3/#criando-sua-instância)
 
 ### Criando um gateway da internet
 Como criar um gateway da internet usando o Console de gerenciamento da AWS
