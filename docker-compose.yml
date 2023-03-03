@@ -22,6 +22,7 @@ services:
       - wordpress
     volumes:
       - /efs/jose_fernando/wordpress:/var/www/html
+      - ./efs/jose_fernando/wordpress/wp-config.php:/var/www/html/wp-config.php
   mysql:
     image: mysql
     restart: always
