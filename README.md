@@ -1,4 +1,4 @@
-# Documentação da atividade sobre AWS e Linux
+# Documentação da atividade sobre Docker
 
 José Fernando Mendes da Costa
 
