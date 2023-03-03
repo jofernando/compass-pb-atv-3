@@ -62,6 +62,29 @@ Como alterar seu Grupo de Segurança usando o Console de gerenciamento da AWS
 
 7. Clique em `Salvar regras`.
 
+### Criando um Grupo de Destino
+1. Faça login no AWS Management Console e abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
+2. No painel de navegação, selecione `Grupos de destino`.
+3. Clique em `Criar grupo de destino`.
+4. Em `Escolha um tipo de destino` selecione `Instâncias`.
+4. Informe o nome em `Nome do grupo de destino`.
+4. Selecione a VPC existente em `VPC`
+4. Em `Configurações avançadas de verificação de integridade` no campo `Códigos de sucesso` informe `200,302`.
+4. Clique em `Próximo`.
+4. Clique em `Criar grupo de destino`.
+
+### Criando um Balanceador de Carga
+1. Faça login no AWS Management Console e abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
+2. No painel de navegação, selecione `Balanceador de Carga`.
+3. Clique em `Criar Balanceador de Carga`.
+4. Em `Application Load Balancer` clique em `Criar`.
+5. Informe o nome no campo `Nome do load balancer`.
+6. No `Esquema` selecione `Voltado para a Internet`.
+7. Em `VPC` selecione a VPC existente.
+8. Em `Mapeamentos` selecione a zona de disponibilidade `us-east-1a (use1-az2)` e a sub-rede `aws-controltower-PrivateSubnet1A`
+9. Em `Grupos de Segurança` selecione somente o Grupo de Segurança criado para o Balanceador de Carga.
+10. Em `Listener HTTP:80` no campo `Ação padrão` selecione o Grupo de Destino criado.
+11. Clique em `Criar Balanceador de Carga'.
 ### Criação da sua instância
 Abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
 1. No painel do console do EC2, clique em `Executar instância`.
@@ -81,7 +104,8 @@ Abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
   - Em `Sub-rede` selecione a sub-rede privada A.
   - Em `Firewall (grupos de segurança)` escolha `Selecionar um Grupo de Segurança existente` e escolha o Grupo de Segurança default.
 7. Em `Configurar armazenamento` crie um disco GP2 de 8GB.
-8. Clique em `Detalhes avançados` e no campo `Dados do usuário` copie e cole o conteúdo do arquivo [user_data.sh](https://github.com/jofernando/compass-pb-atv-3/blob/main/user-data.sh). Esse script vai executar depois da criação da instância e instalar o Docker, Docker Compose, montar o sistema de arquivos EFS e iniciar dois contêiners, do WordPress e MySQL.
+8. Copie o conteúdo do arquivo [user_data.sh](https://github.com/jofernando/compass-pb-atv-3/blob/main/user-data.sh), substitua o texto `DNS_LB` na linha 17 pelo DNS do LoadBalancer
+9. Clique em `Detalhes avançados` e no campo `Dados do usuário` cole o conteúdo do passo anterior. Esse script vai executar depois da criação da instância e instalar o Docker, Docker Compose, montar o sistema de arquivos EFS e iniciar dois contêiners, do WordPress e MySQL.
 
 Mantenha as seleções padrão para outras configurações de sua instância.
 
@@ -91,27 +115,4 @@ Uma página de confirmação informa que sua instância está sendo executada.
 
 Pode levar alguns minutos até que a instância esteja pronta para sua conexão. Verifique se a instância foi aprovada nas verificações de status da coluna Status Checks (Verificações de status).
 
-### Criando um Grupo de Destino
-1. Faça login no AWS Management Console e abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
-2. No painel de navegação, selecione `Grupos de destino`.
-3. Clique em `Criar grupo de destino`.
-4. Em `Escolha um tipo de destino` selecione `Instâncias`.
-4. Informe o nome em `Nome do grupo de destino`.
-4. Selecione a VPC existente em `VPC`
-4. Em `Configurações avançadas de verificação de integridade` no campo `Códigos de sucesso` informe `200,302`.
-4. Clique em `Próximo` 
-4. Selecione a instância criada e clique em `Incluir como pendente abaixo`.
-4. Clique em `Criar grupo de destino`.
-
-### Criando um Balanceador de Carga
-1. Faça login no AWS Management Console e abra o console do Amazon EC2 em https://console.aws.amazon.com/ec2/.
-2. No painel de navegação, selecione `Balanceador de Carga`.
-3. Clique em `Criar Balanceador de Carga`.
-4. Em `Application Load Balancer` clique em `Criar`.
-5. Informe o nome no campo `Nome do load balancer`.
-6. No `Esquema` selecione `Voltado para a Internet`.
-7. Em `VPC` selecione a VPC existente.
-8. Em `Mapeamentos` selecione a zona de disponibilidade `us-east-1a (use1-az2)` e a sub-rede `aws-controltower-PrivateSubnet1A`
-9. Em `Grupos de Segurança` selecione somente o Grupo de Segurança criado para o Balanceador de Carga.
-10. Em `Listener HTTP:80` no campo `Ação padrão` selecione o Grupo de Destino criado.
-11. Clique em `Criar Balanceador de Carga'.
+Depois vá no grupo de destino criado, clique em `Registrar destinos` selecione a instância criada clique em `Incluir como pendente abaixo` e clique em `Registrar destinos pendentes`.
