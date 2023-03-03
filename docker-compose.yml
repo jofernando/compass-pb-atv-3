@@ -13,6 +13,7 @@ services:
       mysql:
         condition: service_healthy
     environment:
+      WORDPRESS_SITEURL: http://MEU_LB_DNS
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_USER: jose
       WORDPRESS_DB_PASSWORD: fa9sd84f98ga

@@ -14,4 +14,5 @@ mkdir --parents /efs/
 cat etc/fstab >> /etc/fstab
 mount -a
 /bin/cp etc/profile.d/00-aliases.sh /etc/profile.d/00-aliases.sh
+sed --in-place 's/MEU_LB_DNS/DNS_LB/g' docker-compose.yml
 docker compose up --detach
